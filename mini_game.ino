@@ -26,6 +26,7 @@ bool matrix[8][8] = {
 struct Point
 {
   int x, y;
+  
   Point& operator= (const Point& other)
   {
      this->x = other.x;
@@ -40,10 +41,10 @@ class Player
   Point m_position[3];
   
   public:
-  void setPosition (Point, Point, Point);
-  void moveRight ();
-  void moveLeft ();
-  Point showMidPosition ();
+  void setPosition(Point, Point, Point);
+  void moveRight();
+  void moveLeft();
+  Point showMidPosition();
 };
 
 Point Player::showMidPosition ()
@@ -85,7 +86,7 @@ void Player::moveLeft ()
 
      m_position[0] = m_position[1];
      m_position[1] = m_position[2];
-     m_position[2].y ++;
+     m_position[2].y++;
 
      matrix[m_position[2].x][m_position[2].y] = true;
      
@@ -101,7 +102,6 @@ long long int current_time, start_time, current_ball_time, start_ball_time, pot_
 
 void setup ()
 {
-  //Serial.begin(9600);
   lcd.begin(16, 2);
   lcd.clear();
   lcd.setCursor(0, 0);
@@ -170,7 +170,6 @@ void loop ()
       
       lightMatrix();
     }
-    
   }
 }
 
@@ -206,9 +205,7 @@ void lightMatrix ()
 {
   for (int i = 0; i < 8; i++)
     for (int j = 0; j < 8; j++)
-    {
       lc.setLed(0, i, j, matrix[i][j]);
-    }
 }
 
 void movePlayer ()
