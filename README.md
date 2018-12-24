@@ -15,7 +15,7 @@ This is an implementation of the Pong-Game using Arduino UNO.
 - Breadboards x 2
 
 # Instructions
-You have to use the joystick in order to move left or right. First one that score 5 points wins (you play against the computer).
+You have to use the joystick in order to move left or right. First one that scores 5 points wins (you play against the computer).
 You can also adjust the speed of the ball using the potentiometer.
 
 Link for video example: https://youtu.be/JlI9hoZ3MYY
