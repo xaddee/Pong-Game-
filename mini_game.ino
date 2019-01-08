@@ -10,6 +10,8 @@ const int v0_pin = 9;
 const int x_pin = A1;
 const int y_pin = A2;
 const int sw_pin = 8;
+const int speed_val = 10;
+const int default_delay = 400;
 int pot_val, x_val, y_val, sw_val;
 
 bool matrix[8][8] = {
@@ -150,7 +152,7 @@ void loop ()
     current_time = millis();
     current_ball_time = millis();
     
-    if (current_time - start_time > 400)
+    if (current_time - start_time > default_time)
     {     
       movePlayer();
       moveComputer();
@@ -158,12 +160,12 @@ void loop ()
       start_time = current_time;
     }
     
-    if (current_ball_time - start_ball_time > 400 - pot_delay)
+    if (current_ball_time - start_ball_time > default_time - pot_delay)
     {
 
       pot_val = analogRead(pot_pin);
-      if (pot_val > 900 && pot_delay <= 200) pot_delay += 10;
-      else if (pot_val < 200 && pot_delay >= 0) pot_delay -= 10;
+      if (pot_val > 900 && pot_delay <= 200) pot_delay += speed_val;
+      else if (pot_val < 200 && pot_delay >= 0) pot_delay -= speed_val;
       
       moveBall();
       start_ball_time = current_ball_time;
@@ -204,8 +206,12 @@ void setPlayers ()
 void lightMatrix ()
 {
   for (int i = 0; i < 8; i++)
+  {
     for (int j = 0; j < 8; j++)
+    {
       lc.setLed(0, i, j, matrix[i][j]);
+    }
+  }
 }
 
 void movePlayer ()
