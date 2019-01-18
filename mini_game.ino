@@ -232,7 +232,7 @@ void moveBall ()
    if (matrix[next_ball.x][next_ball.y] == true)
   {
     ball_x_direction = -ball_x_direction;
-    
+    randomSeed(analogRead(0));
     int random_var = random(2,5);
     if (random_var % 2) ball_y_direction = -ball_y_direction;
 
@@ -301,7 +301,9 @@ void playerPlus ()
   lc.clearDisplay(0);
 
   for (int i = 0; i < 8; i++)
+  {
     lc.setLed(0, i, i, true);
+  }
 
     delay(800);
 }
@@ -312,7 +314,9 @@ void computerPlus ()
   lc.clearDisplay(0);
 
   for (int i = 0; i < 8; i++)
+  {
     lc.setLed(0, i, 8-i-1, true);
+  }
 
   delay(800);
 }
@@ -395,7 +399,8 @@ void setBall ()
   ball.y = 3;
   
   matrix[ball.x][ball.y] = true;
-
+  
+  randomSeed(analogRead(0));
   int random_number_y, random_number_x;
   random_number_y = random(10, 21);
   random_number_x = random(10, 21);
